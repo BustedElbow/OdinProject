@@ -1,0 +1,22 @@
+body {
+  margin: 0px;
+}
+
+.flex-container {
+  display: flex;
+  margin: 1rem;
+}
+
+.flex-container div {
+  border: 3px solid red;
+  height: 100px;
+  width: 200px;
+  background-color: peachpuff;
+  flex: 1 1 0;
+  padding: 1rem;
+}
+
+.flex-container .two {
+  flex-grow: 2;
+  /* flex-shrink: 0; */
+}
