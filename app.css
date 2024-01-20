@@ -20,3 +20,20 @@ body {
   flex-grow: 2;
   /* flex-shrink: 0; */
 }
+
+.container {
+  width: 500px;
+  border: 3px solid blue;
+  height: 500px;
+  margin: 1rem;
+  display: flex;
+  padding: 1rem;
+}
+
+.container div {
+  flex: initial;
+  background-color: beige;
+  width: 200px;
+  height: 100px;
+  border: 5px solid black; 
+}
