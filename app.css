@@ -55,6 +55,19 @@ body {
   align-items: center;
 }
 
+.nav-projects {
+  background-color: peachpuff;
+  padding: 1rem;
+  border-bottom: 5px solid black;
+}
+
+.nav-projects a {
+  border: 3px solid black;
+  text-decoration: none;
+  padding: .25rem;
+  background-color: aqua;
+}
+
 .flex-container {
   /* flex-direction: column; */
   display: flex;
