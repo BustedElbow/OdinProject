@@ -30,7 +30,7 @@ nav a {
 
 nav .nav-links {
   font-size: 18px;
-  margin-right: 7rem;
+  margin-right: 2rem;
   gap: 2rem;
   display: flex;
 }
@@ -39,7 +39,7 @@ nav .logo {
   font-weight: 900;
   font-size: 24px;
   color: #f9faf8;
-  margin-left: 7rem;
+  margin-left: 2rem;
 }
 
 .main-hero {
