@@ -18,7 +18,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: #1f2937;
-  padding: 1rem;
+  padding: .5rem;
   position: fixed;
   top: 0;
   width: 100%;
@@ -26,6 +26,13 @@ nav {
 
 nav a {
   color: inherit;
+  padding: 0.5rem;
+}
+
+nav a:hover {
+  background:#3c4e69;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 nav .nav-links {
@@ -81,6 +88,7 @@ nav .logo {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .main-hero-content button {
