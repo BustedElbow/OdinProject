@@ -1,27 +1,15 @@
 
-// document.querySelectorAll('a[href^="#"]').forEach( anchor => {
-//   anchor.addEventListener('click', event => {
-//     event.preventDefault();
-
-//     document.querySelector(this.getAttribute('href')).scrollIntoView({
-//       behavior: 'smooth'
-//     })
-//   })
-// })
-
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', event => {
-    event.preventDefault(); // Prevent default jump to section
+    event.preventDefault(); 
 
     const target = document.querySelector(anchor.getAttribute('href'));
 
-    if (target) { // Handle potential non-existent target
+    if (target) { 
       target.scrollIntoView({
-        behavior: 'smooth', // Smooth scrolling
-        // Optional customization:
-        block: 'start', // Align top of target to top of viewport
-        inline: 'nearest' // Center target horizontally
+        behavior: 'smooth',
       });
+      console.log(anchor.getAttribute('href'));
     } else {
       console.warn(`Target element not found for href: ${anchor.getAttribute('href')}`);
     }
