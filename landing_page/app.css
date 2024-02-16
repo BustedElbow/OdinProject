@@ -50,14 +50,21 @@ nav .logo {
 }
 
 .main-hero {
-  margin-top: 2rem;
   background-color: #1f2937;
   height: 100vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.main-hero-container {
+  margin-top: 2rem;
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  width: 75%;
 }
 
 .main-hero-content h1 {
@@ -89,6 +96,7 @@ nav .logo {
   align-items: center;
   padding: 1rem;
   border-radius: 0.5rem;
+
 }
 
 .main-hero-content button {
@@ -132,6 +140,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   gap: 3rem;
+  width: 75%;
 }
 
 .main-two-container .item {
@@ -166,7 +175,7 @@ button:hover {
   padding: 1rem;
 }
 .main-three .quote-container {
-  width: 70%;
+  width: 75%;
   display: flex;
   flex-direction: column;
 }
@@ -194,7 +203,7 @@ button:hover {
 
 .main-four .sign-container {
   background-color: #3882f6;
-  width: 70%;
+  width: 75%;
   padding: 1rem;
   border-radius: 0.5rem;
   display: flex;
