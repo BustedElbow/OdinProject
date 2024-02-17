@@ -1,5 +1,5 @@
 function checker() {
-  if (roundCounter == 5){
+  if (scoreComputer == 5 || scorePlayer == 5){
     rock.setAttribute('id', 'null');
     paper.setAttribute('id', 'null');
     scissors.setAttribute('id', 'null');
@@ -7,9 +7,9 @@ function checker() {
     setTimeout(() => {
       popUp.style.display = "flex";    
       if (scorePlayer > scoreComputer){
-        matchPopLog.textContent = `Player wins! With a score of ${scorePlayer} over 5`
+        matchPopLog.textContent = `Player wins! With a score of ${scorePlayer} over ${scoreComputer}`;
       } else {
-        matchPopLog.textContent = `Computer wins! With a score of ${scoreComputer} over 5`
+        matchPopLog.textContent = `Computer wins! With a score of ${scoreComputer} over ${scorePlayer}`;
       }
     }, 100)
   }
@@ -18,8 +18,8 @@ function checker() {
 function round(playerChoice, computerChoice) {
   if (playerChoice === computerChoice){
     log.textContent = "Its a tie";
-    // roundCounter++;
-    // roundLog.textContent = roundCounter;
+    roundCounter++;
+    roundLog.textContent = roundCounter;
   } else if (
     (playerChoice === "rock" && computerChoice === "scissors") ||
     (playerChoice === "paper" && computerChoice === "rock") || 
@@ -57,7 +57,7 @@ function game() {
 function reset() {
   scoreComputer = 0;
   scorePlayer = 0;
-  roundCounter = 0;
+  roundCounter = 1;
   popUp.style.display = "none";
   roundLog.textContent = "1";
   log.textContent = ".";
@@ -97,7 +97,7 @@ let computerRecord = document.querySelector("#computerScore");
 
 let scorePlayer = 0;
 let scoreComputer = 0;
-let roundCounter = 0;
+let roundCounter = 1;
 
 let roundLog = document.querySelector("#round");
 roundLog.textContent = roundCounter;
