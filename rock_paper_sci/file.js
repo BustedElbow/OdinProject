@@ -37,7 +37,7 @@ function round(playerChoice, computerChoice) {
     roundCounter++;
     roundLog.textContent = roundCounter;
   }
-  checker()
+  // checker();
 }
 
 function getComputerChoice() {
@@ -51,13 +51,13 @@ function game() {
   round(player, computer);
   
   checker();
-  console.log(roundCounter);
+  // console.log(roundCounter);
 }
 
 function reset() {
   scoreComputer = 0;
   scorePlayer = 0;
-  roundCounter = 1;
+  roundCounter = 0;
   popUp.style.display = "none";
   roundLog.textContent = "1";
   log.textContent = ".";
