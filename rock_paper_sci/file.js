@@ -1,5 +1,9 @@
 function checker() {
   if (roundCounter == 5){
+    rock.setAttribute('id', 'null');
+    paper.setAttribute('id', 'null');
+    scissors.setAttribute('id', 'null');
+
     setTimeout(() => {
       popUp.style.display = "flex";    
       if (scorePlayer > scoreComputer){
@@ -14,6 +18,8 @@ function checker() {
 function round(playerChoice, computerChoice) {
   if (playerChoice === computerChoice){
     log.textContent = "Its a tie";
+    // roundCounter++;
+    // roundLog.textContent = roundCounter;
   } else if (
     (playerChoice === "rock" && computerChoice === "scissors") ||
     (playerChoice === "paper" && computerChoice === "rock") || 
@@ -22,11 +28,16 @@ function round(playerChoice, computerChoice) {
     scorePlayer++;
     playerRecord.textContent = scorePlayer;
     log.textContent = `You Win ${playerChoice} beats ${computerChoice}`;
+    roundCounter++;
+    roundLog.textContent = roundCounter;
   } else {
     scoreComputer++;
     computerRecord.textContent = scoreComputer;
     log.textContent = `You Lose ${computerChoice} beats ${playerChoice}`;
+    roundCounter++;
+    roundLog.textContent = roundCounter;
   }
+  checker()
 }
 
 function getComputerChoice() {
@@ -37,12 +48,10 @@ function getComputerChoice() {
 function game() {
   const computer = getComputerChoice();
   const player = playerChoice;
-  (round(player, computer));
-  
-  roundCounter++;
-  roundLog.textContent = roundCounter;
+  round(player, computer);
   
   checker();
+  console.log(roundCounter);
 }
 
 function reset() {
@@ -54,21 +63,47 @@ function reset() {
   log.textContent = ".";
   playerRecord.textContent = "";
   computerRecord.textContent = "";
+  rock.setAttribute('id', 'rock');
+  paper.setAttribute('id', 'paper');
+  scissors.setAttribute('id', 'scissors');
 }
+
+let choices = document.querySelector("#choices");
+choices.addEventListener('click', (event) => {
+  let target = event.target;
+  
+  switch(target.id) {
+    case 'rock':
+      playerChoice = "rock";
+      game()
+      break;
+    case 'paper':
+      playerChoice = "paper";
+      game()
+      break;
+    case 'scissors':
+      playerChoice = "scissors";
+      game()
+      break;  
+  }
+})
+
+let rock = document.querySelector("#rock");
+let paper = document.querySelector("#paper");
+let scissors = document.querySelector("#scissors");
 
 let playerRecord = document.querySelector("#playerScore");
 let computerRecord = document.querySelector("#computerScore");
 
 let scorePlayer = 0;
 let scoreComputer = 0;
-let roundCounter = 1;
+let roundCounter = 0;
 
 let roundLog = document.querySelector("#round");
 roundLog.textContent = roundCounter;
 
 let popUp = document.querySelector("#matchPop");
 
-let choices = document.querySelector("#choices");
 let log = document.querySelector("#log");
 let playerChoice = "";
 
@@ -77,24 +112,3 @@ let matchPopBtn = document.querySelector("#matchPopBtn");
 
 matchPopBtn.addEventListener('click', reset);
 
-choices.addEventListener('click', (event) => {
-  let target = event.target;
-  
-  switch(target.id) {
-    case 'rock':
-      playerChoice = "rock";
-      // log.textContent = "You picked Rocked";
-      game()
-      break;
-    case 'paper':
-      playerChoice = "paper";
-      // log.textContent = "You picked Paper";
-      game()
-      break;
-    case 'scissors':
-      playerChoice = "scissors";
-      // log.textContent = "You picked Scissors";
-      game()
-      break;  
-  }
-})
