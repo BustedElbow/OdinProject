@@ -107,7 +107,7 @@ footer img {
   border-bottom: 6px solid green;
   transform: translateY(-10px);
   transition: transform 0.2s ease-in-out;
-  
+  cursor: pointer;
 }
 
 #matchPop {
@@ -143,4 +143,5 @@ footer img {
 
 #matchPopBtn:hover {
   outline: 3px solid black;
+  cursor: pointer;
 }
