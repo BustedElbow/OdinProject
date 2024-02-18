@@ -32,6 +32,7 @@ footer p {
 }
 footer {
   padding: 1rem;
+  padding-bottom: .5rem;
   height: 5vh;
   background-color: black;
   display: flex;
