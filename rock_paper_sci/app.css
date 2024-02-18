@@ -27,6 +27,11 @@ section {
   align-items: center;
   gap: 1rem;
 }
+
+section h1 {
+  margin-bottom: 5rem;
+}
+
 footer p {
   align-self: flex-end;
 }
