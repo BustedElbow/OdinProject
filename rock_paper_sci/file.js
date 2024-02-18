@@ -6,10 +6,17 @@ function checker() {
 
     setTimeout(() => {
       popUp.style.display = "flex";    
+      matchPopLog.textContent = `With a score of ${scorePlayer} over ${scoreComputer}`;
       if (scorePlayer > scoreComputer){
-        matchPopLog.textContent = `Player wins! With a score of ${scorePlayer} over ${scoreComputer}`;
+        matchWinner.textContent = "YOU WON";
+        popUp.style.backgroundColor = "#bed882";
+        popUp.style.border = "4px solid #6c9b00";
+        matchPopBtn.style.backgroundColor = "#6c9b00"
       } else {
-        matchPopLog.textContent = `Computer wins! With a score of ${scoreComputer} over ${scorePlayer}`;
+        matchWinner.textContent = "YOU LOST";
+        popUp.style.backgroundColor = "#ffc7c4";
+        popUp.style.border = "4px solid #ff6a6a";
+        matchPopBtn.style.backgroundColor = "#ff6a6a";
       }
     }, 100)
   }
@@ -60,7 +67,7 @@ function reset() {
   roundCounter = 1;
   popUp.style.display = "none";
   roundLog.textContent = "1";
-  log.textContent = "-----";
+  log.textContent = "Start the game.";
   playerRecord.textContent = "";
   computerRecord.textContent = "";
   rock.setAttribute('id', 'rock');
@@ -103,13 +110,12 @@ let roundCounter = 1;
 let roundLog = document.querySelector("#round");
 roundLog.textContent = roundCounter;
 
-let popUp = document.querySelector("#matchPop");
-
 let log = document.querySelector("#log");
 let playerChoice = "";
 
+let popUp = document.querySelector("#matchPop");
 let matchPopLog = document.querySelector("#matchPopLog");
 let matchPopBtn = document.querySelector("#matchPopBtn");
-
+let matchWinner = document.querySelector("#matchWinner");
 matchPopBtn.addEventListener('click', reset);
 
