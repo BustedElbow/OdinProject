@@ -60,7 +60,7 @@ function reset() {
   roundCounter = 1;
   popUp.style.display = "none";
   roundLog.textContent = "1";
-  log.textContent = ".";
+  log.textContent = "-----";
   playerRecord.textContent = "";
   computerRecord.textContent = "";
   rock.setAttribute('id', 'rock');
