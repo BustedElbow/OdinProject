@@ -56,9 +56,32 @@ footer {
   background-color: aquamarine;
 }
 
+.log-container {
+  border: 1px solid red;
+  width: 300px;
+  padding: .5rem;
+  display: flex;
+  justify-content: center;
+}
+
+#choices {
+  height: 300px;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
 
 #choices img {
   padding: 1rem;
+  border-bottom: 6px solid bisque;
+}
+#choices img:hover {
+  /* padding: 1rem; */
+  border-bottom: 6px solid green;
+  transform: translateY(-10px);
+  transition: transform 0.2s ease-in-out;
+  
 }
 
 #matchPop {

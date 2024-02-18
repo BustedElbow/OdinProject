@@ -17,7 +17,7 @@ function checker() {
 
 function round(playerChoice, computerChoice) {
   if (playerChoice === computerChoice){
-    log.textContent = "Its a tie";
+    log.textContent = "It's a tie.";
     roundCounter++;
     roundLog.textContent = roundCounter;
   } else if (
@@ -27,13 +27,13 @@ function round(playerChoice, computerChoice) {
   ) {
     scorePlayer++;
     playerRecord.textContent = scorePlayer;
-    log.textContent = `You Win ${playerChoice} beats ${computerChoice}`;
+    log.textContent = `You win! ${playerChoice} beats ${computerChoice}.`;
     roundCounter++;
     roundLog.textContent = roundCounter;
   } else {
     scoreComputer++;
     computerRecord.textContent = scoreComputer;
-    log.textContent = `You Lose ${computerChoice} beats ${playerChoice}`;
+    log.textContent = `You lose! ${computerChoice} beats ${playerChoice}.`;
     roundCounter++;
     roundLog.textContent = roundCounter;
   }
@@ -75,6 +75,7 @@ choices.addEventListener('click', (event) => {
   switch(target.id) {
     case 'rock':
       playerChoice = "rock";
+      // rock.style.cssText = "border: 2px solid green";
       game()
       break;
     case 'paper':
