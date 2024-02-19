@@ -1,0 +1,19 @@
+main {
+  height: 100vh;
+  background-color: gray;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+footer {
+  height: 10vh;
+  background-color: black;
+  color: white;
+}
+
+
+.container {
+  display: flex;
+}
