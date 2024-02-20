@@ -1,6 +1,9 @@
 generateGrid(16);
 
 function generateGrid(number) {
+  let container = document.querySelector('.container');
+  container.innerHTML = '';
+
   let dimension = 100 / number;
  
   for (i = 0; i < number * number; i++) {
@@ -22,12 +25,22 @@ function generateGrid(number) {
   }
 }
 
-let colorPick = document.querySelector('#colorPicker');
+function clearGrid() {
+  let pixels = document.querySelectorAll('.pixel')
+  pixels.forEach((event)=> {
+    event.style.backgroundColor = 'white';
+  })
+}
+
 let penMode = true;
 let eraserMode = false;
+let colorPick = document.querySelector('#colorPicker');
 let eraser = document.querySelector('#eraser');
 let pen = document.querySelector('#pen');
 let clear = document.querySelector('#clear');
+let pixelGrid = document.querySelector('#pixelGrid');
+
+clear.addEventListener('click', clearGrid);
 
 eraser.addEventListener('click', () => {
   eraserMode = true;
@@ -39,11 +52,11 @@ pen.addEventListener('click', () => {
   eraserMode = false;
 })
 
-function clearGrid() {
-  let pixels = document.querySelectorAll('.pixel')
-  pixels.forEach((event)=> {
-    event.style.backgroundColor = 'white';
-  })
-}
+pixelGrid.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    let realValue = parseInt(pixelGrid.value);
+    generateGrid(realValue);
+    console.log('burh')
+  }
+})
 
-clear.addEventListener('click', clearGrid);
