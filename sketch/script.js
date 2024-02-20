@@ -12,14 +12,14 @@ function generateGrid(number) {
     pixel.style.width = `${dimension}%`;
     pixel.style.height = `${dimension}%`;
 
-      pixel.addEventListener('mouseover', () => {
-        if (penMode) {
-          pixel.style.backgroundColor = colorPick.value;
-        }
-        if (eraserMode) {
-          pixel.style.backgroundColor = 'white';
-        }
-      })
+    pixel.addEventListener('mouseover', () => {
+      if (penMode) {
+        pixel.style.backgroundColor = colorPick.value;
+      }
+      if (eraserMode) {
+        pixel.style.backgroundColor = 'white';
+      }
+    })
 
     document.querySelector('.container').appendChild(pixel)
   }
@@ -38,7 +38,7 @@ let colorPick = document.querySelector('#colorPicker');
 let eraser = document.querySelector('#eraser');
 let pen = document.querySelector('#pen');
 let clear = document.querySelector('#clear');
-let pixelGrid = document.querySelector('#pixelGrid');
+let setGrid = document.querySelector('#setGrid');
 
 clear.addEventListener('click', clearGrid);
 
@@ -52,11 +52,16 @@ pen.addEventListener('click', () => {
   eraserMode = false;
 })
 
-pixelGrid.addEventListener('keydown', (event) => {
+setGrid.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
-    let realValue = parseInt(pixelGrid.value);
-    generateGrid(realValue);
-    console.log('burh')
+    let intValue = parseInt(setGrid.value);
+    if (Number.isNaN(intValue)) {
+      alert('Please enter a valid number');
+      setGrid.value = '';
+      setGrid.focus();
+    } else {
+      generateGrid(intValue);
+    }
   }
 })
 
