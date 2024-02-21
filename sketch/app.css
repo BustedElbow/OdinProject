@@ -76,3 +76,19 @@ footer span {
 .title {
   margin-bottom: 5rem;
 }
+
+button {
+  border: none;
+  outline: 2px solid black;
+  background-color: white;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+.pen-active, .eraser-active, .rainbow-active {
+  background-color: black;
+  color: white;
+}

@@ -60,18 +60,21 @@ rainbow.addEventListener('click', () => {
   rainbowMode = true;
   penMode = false;
   eraserMode = false;
+  rainbowActive();
 })
 
 eraser.addEventListener('click', () => {
   eraserMode = true;
   penMode = false;
   rainbowMode = false;
+  eraserActive();
 })
 
 pen.addEventListener('click', () => {
   penMode = true;
   eraserMode = false;
   rainbowMode = false;
+  penActive();
 })
 
 setGrid.addEventListener('keydown', (event) => {
@@ -91,4 +94,33 @@ setGrid.addEventListener('keydown', (event) => {
   }
 })
 
+//Active buttons
+function penActive() {
+  if(penMode) {
+   pen.classList.add('pen-active');
+   eraser.classList.remove('eraser-active');
+   rainbow.classList.remove('rainbow-active');
+  } else {
+    pen.classList.remove('pen-active');
+  }
+}
 
+function eraserActive() {
+  if(eraserMode) {
+    eraser.classList.add('eraser-active');
+    pen.classList.remove('pen-active');
+    rainbow.classList.remove('rainbow-active')
+  } else {
+    eraser.classList.remove('eraser-active');
+  }
+}
+
+function rainbowActive() {
+  if(rainbowMode) {
+    rainbow.classList.add('rainbow-active')
+    pen.classList.remove('pen-active');
+    eraser.classList.remove('eraser-active')
+  } else {
+    rainbow.classList.remove('rainbow-active')
+  }
+}
