@@ -59,9 +59,16 @@ setGrid.addEventListener('keydown', (event) => {
       alert('Please enter a valid number');
       setGrid.value = '';
       setGrid.focus();
+    } else if(intValue > 100) {
+      alert('Avoid exceeding the 100 limit.')
+      setGrid.value = '';
+      setGrid.focus();
     } else {
       generateGrid(intValue);
     }
   }
 })
 
+function randomColor() {
+  //Set
+}
