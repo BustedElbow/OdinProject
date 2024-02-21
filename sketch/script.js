@@ -20,6 +20,9 @@ function generateGrid(number) {
       if (eraserMode) {
         pixel.style.backgroundColor = 'white';
       }
+      if (rainbowMode) {
+        pixel.style.backgroundColor = randomColor();
+      }
     })
 
     document.querySelector('.container').appendChild(pixel)
@@ -33,9 +36,19 @@ function clearGrid() {
   })
 }
 
+function randomColor() {
+  let r = Math.floor(Math.random() * 255);
+  let g = Math.floor(Math.random() * 255);
+  let b = Math.floor(Math.random() * 255);
+
+  return `rgb(${r} ${g} ${b})`;
+}
+
+let rainbowMode = false;
 let penMode = true;
 let eraserMode = false;
 let colorPick = document.querySelector('#colorPicker');
+let rainbow = document.querySelector('#rainbow');
 let eraser = document.querySelector('#eraser');
 let pen = document.querySelector('#pen');
 let clear = document.querySelector('#clear');
@@ -43,14 +56,22 @@ let setGrid = document.querySelector('#setGrid');
 
 clear.addEventListener('click', clearGrid);
 
+rainbow.addEventListener('click', () => {
+  rainbowMode = true;
+  penMode = false;
+  eraserMode = false;
+})
+
 eraser.addEventListener('click', () => {
   eraserMode = true;
   penMode = false;
+  rainbowMode = false;
 })
 
 pen.addEventListener('click', () => {
   penMode = true;
   eraserMode = false;
+  rainbowMode = false;
 })
 
 setGrid.addEventListener('keydown', (event) => {
@@ -70,6 +91,4 @@ setGrid.addEventListener('keydown', (event) => {
   }
 })
 
-function randomColor() {
-  //Set
-}
+
