@@ -1,5 +1,6 @@
 generateGrid(16);
 
+//Default: 16 Max: 100
 function generateGrid(number) {
   let container = document.querySelector('.container');
   container.innerHTML = '';
