@@ -104,7 +104,7 @@ multiplyBtn.addEventListener('click', () => {
 })
 divideBtn.addEventListener('click', () => {
   screenTop.textContent += screenBottom.textContent;
-  screenTop.textContent += ' / ';
+  screenTop.textContent += ' ÷ ';
   screenBottom.textContent = '';
 })
 equalBtn.addEventListener('click', () => {
