@@ -1,4 +1,3 @@
-
 function add(numOne,numTwo) {
   return numOne + numTwo
 }
@@ -37,20 +36,27 @@ function evalaute(firstNum,Operator,secondNum) {
   }
   
 function operate(operation, sign) {
-  operator = operation;
-  evalaute(previousNum, operator, currentNum);
-  previousNum = currentNum;
-  screenTop.textContent += screenBottom.textContent;
-  screenTop.textContent += ` ${sign} `
-  screenBottom.textContent = ''
-  currentNum = 0;
+
+  if(isOperator) {
+    operator = operation;
+    evalaute(previousNum, operator, currentNum);
+    previousNum = currentNum;
+    screenTop.textContent += screenBottom.textContent;
+    screenTop.textContent += ` ${sign} `
+    screenBottom.textContent = ''
+    currentNum = 0;
+  }
+
+  isOperator = false;
 }
 
 function buttonClick(value) {
- 
+  isOperator = true;
   screenBottom.textContent += value;
   currentNum = parseInt(screenBottom.textContent);
 }
+
+let isOperator = false;
 
 let previousNum = 0;
 let currentNum = 0;
@@ -94,6 +100,7 @@ clearAllBtn.addEventListener('click', () => {
   currentNum = 0;
   operator = '';
 })
+
 clearBtn.addEventListener('click', () => {
   screenBottom.textContent = '';
 })
@@ -109,7 +116,6 @@ eightBtn.addEventListener('click', () => {buttonClick(8)})
 nineBtn.addEventListener('click', () => {buttonClick(9)})
 zeroBtn.addEventListener('click', () => {buttonClick(0)})
 
-
 addBtn.addEventListener('click', () => {operate('addition', '+')})
 subBtn.addEventListener('click', () => {operate('subtraction', '-')})
 multiplyBtn.addEventListener('click', () => {operate('multiplication', '*')})
@@ -117,6 +123,7 @@ divideBtn.addEventListener('click', () => {operate('division', '÷')})
 equalBtn.addEventListener('click', () => {
   screenTop.textContent += screenBottom.textContent;
   screenBottom.textContent =  evalaute(previousNum, operator, currentNum);
+  currentNum = 0;
 })
 
 
