@@ -1,17 +1,17 @@
 function add(numOne,numTwo) {
-  return numOne + numTwo
+  return numOne + numTwo;
 }
 
 function subtract(numOne,numTwo) {
-  return numOne - numTwo
+  return numOne - numTwo;
 }
 
 function multiply(numOne,numTwo) {
-  return numOne * numTwo
+  return numOne * numTwo;
 }
 
 function divide(numOne,numTwo) {
-  return numOne / numTwo
+  return numOne / numTwo;
 }
 
 function evalaute(firstNum,Operator,secondNum) {
@@ -30,6 +30,7 @@ function evalaute(firstNum,Operator,secondNum) {
     case 'division':
       result = divide(firstNum, secondNum);
       break;
+   
     }
     
   return result;
@@ -39,12 +40,14 @@ function operate(operation, sign) {
 
   if(isOperator) {
     operator = operation;
-    evalaute(previousNum, operator, currentNum);
     previousNum = currentNum;
     screenTop.textContent += screenBottom.textContent;
     screenTop.textContent += ` ${sign} `
     screenBottom.textContent = ''
     currentNum = 0;
+  } else {
+    
+    previousNum = evalaute(previousNum, operator, currentNum);
   }
 
   isOperator = false;
@@ -70,6 +73,7 @@ testBtn.addEventListener('click', () => {
   console.log(`Current Number: ${currentNum}`);
   console.log(`Previous Number: ${previousNum}`);
   console.log(`Operator: ${operator}`);
+  console.log(`IsOperator: ${isOperator}`);
 })
 
 //Buttons
@@ -103,6 +107,13 @@ clearAllBtn.addEventListener('click', () => {
 
 clearBtn.addEventListener('click', () => {
   screenBottom.textContent = '';
+  currentNum = 0;
+})
+
+backSpcBtn.addEventListener('click', () => {
+  if(screenBottom.textContent.length > 0) {
+    screenBottom.textContent = screenBottom.textContent.substring(0, screenBottom.textContent.length - 1)
+  }
 })
 
 oneBtn.addEventListener('click', () => {buttonClick(1)})
@@ -121,9 +132,14 @@ subBtn.addEventListener('click', () => {operate('subtraction', '-')})
 multiplyBtn.addEventListener('click', () => {operate('multiplication', '*')})
 divideBtn.addEventListener('click', () => {operate('division', '÷')})
 equalBtn.addEventListener('click', () => {
-  screenTop.textContent += screenBottom.textContent;
-  screenBottom.textContent =  evalaute(previousNum, operator, currentNum);
-  currentNum = 0;
-})
 
+  if(operator != '') {
+    previousNum = evalaute(previousNum, operator, currentNum)
+    screenTop.textContent += screenBottom.textContent;
+    screenBottom.textContent = previousNum;
+    currentNum = 0;
+  } else {
+    screenBottom.textContent = currentNum;
+  }
+})
 
