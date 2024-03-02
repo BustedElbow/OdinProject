@@ -21,7 +21,7 @@ function equal(numOne, sign, numTwo) {
       globalOperator === 'subtraction') && currentNum === 0) {
     screenBottom.textContent = previousNum;
   } else if(globalOperator != ''){
-    screenTop.textContent = `${numOne} ${sign} ${numTwo}`
+    screenTop.textContent = `${numOne} ${sign} ${numTwo} =`
     previousNum = evalaute(numOne, globalOperator, numTwo)
     screenBottom.textContent = `${previousNum}`;
     currentNum = 0;
@@ -131,7 +131,7 @@ clearAllBtn.addEventListener('click', () => {
   previousNum = 0;
   currentNum = 0;
   globalSign = '';
-  operator = '';
+  globalOperator = '';
   isOperator = false;
 })
 
@@ -151,19 +151,15 @@ backSpcBtn.addEventListener('click', () => {
   }
 })
 
-let isNegative = false;
 
 negativeBtn.addEventListener('click', () => {
-  isNegative = !isNegative;
-
-  if(isNegative) {
-    const negative = '-';
-    screenBottom.textContent = negative.concat('', screenBottom.textContent);
+  let negative = screenBottom.textContent;
+  if(!negative.includes('-')) {
+    screenBottom.textContent = negative.replace('', '-');
   } else {
-    const positive = '';
-    screenBottom.textContent = positive.concat('', screenBottom.textContent);
+    screenBottom.textContent = negative.replace('-', '');
   }
-  // currentNum = parseInt(screenBottom.textContent);
+  currentNum = parseInt(screenBottom.textContent);
 })
 
 oneBtn.addEventListener('click', () => {buttonClick(1)})
