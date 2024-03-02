@@ -20,14 +20,18 @@ function equal(numOne, sign, numTwo) {
       globalOperator === 'addition' ||
       globalOperator === 'subtraction') && currentNum === 0) {
     screenBottom.textContent = previousNum;
-  } else if(globalOperator != ''){
-    screenTop.textContent = `${numOne} ${sign} ${numTwo} =`
+  } else if(globalOperator !== ''){
     previousNum = evalaute(numOne, globalOperator, numTwo)
+    screenTop.textContent = `${numOne} ${sign} ${numTwo} =`
     screenBottom.textContent = `${previousNum}`;
     currentNum = 0;
+  } else if(currentNum === 0 || previousNum === 0) {
+    screenBottom.textContent = '';
+    // screenTop.textContent = '';
   } else {
     screenBottom.textContent = currentNum;
   }
+  globalOperator = '';
   isEqual = true;
 }
 
@@ -51,38 +55,51 @@ function evalaute(firstNum,Operator,secondNum) {
 }
   
 function operate(operation, sign) {
-  if(isOperator) {
-    globalSign = sign;
-    let result = evalaute(previousNum, globalOperator, currentNum);
-    globalOperator = operation;
-    previousNum = result;
-    screenTop.textContent = `${result}`;
-    screenTop.textContent += ` ${sign} `;
-    screenBottom.textContent = ''
-    currentNum = 0;
-  } 
-  if(isEqual){
-    screenTop.textContent = '';
-    screenBottom.textContent = '';
-  } 
+  // if(isEqual){
+  //   currentNum = 0;
+  //   screenTop.textContent = '';
+  //   screenBottom.textContent = '';
+  if(isEqual && isOperator) {
+      globalSign = sign;
+      //let result = evalaute(previousNum, globalOperator, currentNum);
+      globalOperator = operation;
+      //previousNum = result;
+      screenTop.textContent = `${previousNum}`;
+      screenTop.textContent += ` ${sign} `;
+      screenBottom.textContent = ''
+      currentNum = 0;
+      isEqual = false;
+  } else {
+    if(isOperator) {
+      globalSign = sign;
+      let result = evalaute(previousNum, globalOperator, currentNum);
+      globalOperator = operation;
+      previousNum = result;
+      screenTop.textContent = `${result}`;
+      screenTop.textContent += ` ${sign} `;
+      screenBottom.textContent = ''
+      currentNum = 0;
+    } 
+  }
   isOperator = false;
 }
 
 function buttonClick(value) {
   if(isEqual) {
-    previousNum = 0;
+    //previousNum = 0;
     screenTop.textContent = '';
     screenBottom.textContent = '';
     screenBottom.textContent += value;
     currentNum = parseFloat(screenBottom.textContent)
     isEqual = false;
   } else {
-    isOperator = true;
     screenBottom.textContent += value;
     currentNum = parseFloat(screenBottom.textContent);
   }
+  isOperator = true;
 }
 
+//Global
 let isEqual = false;
 let isOperator = false;
 let globalSign = '';
