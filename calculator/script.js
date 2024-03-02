@@ -57,7 +57,6 @@ function buttonClick(value) {
   currentNum = parseInt(screenBottom.textContent);
 }
 
-let isEqual = false;
 let isOperator = false;
 let globalSign = '';
 let previousNum = 0;
@@ -114,6 +113,9 @@ backSpcBtn.addEventListener('click', () => {
   if(screenBottom.textContent.length > 0) {
     screenBottom.textContent = screenBottom.textContent.substring(0, screenBottom.textContent.length - 1)
     currentNum = parseInt(screenBottom.textContent);
+    if(Number.isNaN(currentNum)){
+      currentNum = 0;
+    }
   }
 })
 
@@ -134,7 +136,9 @@ multiplyBtn.addEventListener('click', () => {operate('multiplication', '*')})
 divideBtn.addEventListener('click', () => {operate('division', '÷')})
 equalBtn.addEventListener('click', () => {
 
-  if(operator != '') {
+  if(operator === 'multiplication' && currentNum == 0) {
+    screenBottom.textContent = previousNum;
+  } else if(operator != ''){
     screenTop.textContent = `${previousNum} ${globalSign} ${currentNum}`
     previousNum = evalaute(previousNum, operator, currentNum)
     screenBottom.textContent = `${previousNum}`;
