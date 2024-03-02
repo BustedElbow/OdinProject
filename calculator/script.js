@@ -38,6 +38,7 @@ function evalaute(firstNum,Operator,secondNum) {
   
 function operate(operation, sign) {
   if(isOperator) {
+    globalSign = sign;
     let result = evalaute(previousNum, operator, currentNum);
     operator = operation;
     previousNum = result;
@@ -56,8 +57,9 @@ function buttonClick(value) {
   currentNum = parseInt(screenBottom.textContent);
 }
 
+let isEqual = false;
 let isOperator = false;
-
+let globalSign = '';
 let previousNum = 0;
 let currentNum = 0;
 let operator = '';
@@ -99,6 +101,7 @@ clearAllBtn.addEventListener('click', () => {
   screenBottom.textContent = '';
   previousNum = 0;
   currentNum = 0;
+  globalSign = '';
   operator = '';
 })
 
@@ -110,6 +113,7 @@ clearBtn.addEventListener('click', () => {
 backSpcBtn.addEventListener('click', () => {
   if(screenBottom.textContent.length > 0) {
     screenBottom.textContent = screenBottom.textContent.substring(0, screenBottom.textContent.length - 1)
+    currentNum = parseInt(screenBottom.textContent);
   }
 })
 
@@ -131,6 +135,7 @@ divideBtn.addEventListener('click', () => {operate('division', '÷')})
 equalBtn.addEventListener('click', () => {
 
   if(operator != '') {
+    screenTop.textContent = `${previousNum} ${globalSign} ${currentNum}`
     previousNum = evalaute(previousNum, operator, currentNum)
     screenBottom.textContent = `${previousNum}`;
     currentNum = 0;
