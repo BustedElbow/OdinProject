@@ -28,13 +28,11 @@ function equal(numOne, sign, numTwo) {
   } else {
     screenBottom.textContent = currentNum;
   }
-
   isEqual = true;
 }
 
 function evalaute(firstNum,Operator,secondNum) {
   let result = currentNum;
-  
   switch(Operator) {
     case 'addition':
       result = add(firstNum, secondNum);
@@ -49,7 +47,6 @@ function evalaute(firstNum,Operator,secondNum) {
       result = divide(firstNum, secondNum);
       break;
     }
-    
   return result;
 }
   
@@ -64,12 +61,14 @@ function operate(operation, sign) {
     screenBottom.textContent = ''
     currentNum = 0;
   } 
- 
+  if(isEqual){
+    screenTop.textContent = '';
+    screenBottom.textContent = '';
+  } 
   isOperator = false;
 }
 
 function buttonClick(value) {
-
   if(isEqual) {
     previousNum = 0;
     screenTop.textContent = '';
@@ -82,8 +81,7 @@ function buttonClick(value) {
     screenBottom.textContent += value;
     currentNum = parseInt(screenBottom.textContent);
   }
-
-  }
+}
 
 let isEqual = false;
 let isOperator = false;
@@ -101,29 +99,30 @@ testBtn.addEventListener('click', () => {
   console.log(`Previous Number: ${previousNum}`);
   console.log(`Operator: ${globalOperator}`);
   console.log(`IsOperator: ${isOperator}`);
+  console.log(`IsEqual: ${isEqual}`)
 })
 
 //Buttons
-let backSpcBtn = document.querySelector('#backspace');
-let clearAllBtn = document.querySelector('#clearAllBtn');
-let clearBtn = document.querySelector('#clearBtn')
-let zeroBtn = document.querySelector('#zeroBtn');
-let oneBtn = document.querySelector('#oneBtn');
-let twoBtn = document.querySelector('#twoBtn');
-let threeBtn = document.querySelector('#threeBtn');
-let fourBtn = document.querySelector('#fourBtn');
-let fiveBtn = document.querySelector('#fiveBtn');
-let sixBtn = document.querySelector('#sixBtn');
-let sevenBtn = document.querySelector('#sevenBtn');
-let eightBtn = document.querySelector('#eightBtn');
-let nineBtn = document.querySelector('#nineBtn');
+const backSpcBtn = document.querySelector('#backspace');
+const clearAllBtn = document.querySelector('#clearAllBtn');
+const clearBtn = document.querySelector('#clearBtn')
+const zeroBtn = document.querySelector('#zeroBtn');
+const oneBtn = document.querySelector('#oneBtn');
+const twoBtn = document.querySelector('#twoBtn');
+const threeBtn = document.querySelector('#threeBtn');
+const fourBtn = document.querySelector('#fourBtn');
+const fiveBtn = document.querySelector('#fiveBtn');
+const sixBtn = document.querySelector('#sixBtn');
+const sevenBtn = document.querySelector('#sevenBtn');
+const eightBtn = document.querySelector('#eightBtn');
+const nineBtn = document.querySelector('#nineBtn');
 //Operation Button
-let negativeBtn = document.querySelector('#negativeBtn');
-let addBtn = document.querySelector('#addBtn');
-let subBtn = document.querySelector('#subBtn');
-let multiplyBtn = document.querySelector('#multiplyBtn');
-let divideBtn = document.querySelector('#divideBtn');
-let equalBtn = document.querySelector('#equalBtn');
+const negativeBtn = document.querySelector('#negativeBtn');
+const addBtn = document.querySelector('#addBtn');
+const subBtn = document.querySelector('#subBtn');
+const multiplyBtn = document.querySelector('#multiplyBtn');
+const divideBtn = document.querySelector('#divideBtn');
+const equalBtn = document.querySelector('#equalBtn');
 
 clearAllBtn.addEventListener('click', () => {
   screenTop.textContent = '';
@@ -150,7 +149,6 @@ backSpcBtn.addEventListener('click', () => {
     }
   }
 })
-
 
 negativeBtn.addEventListener('click', () => {
   let negative = screenBottom.textContent;
