@@ -1,38 +1,53 @@
 
 function add(numOne,numTwo) {
-  //add
   return numOne + numTwo
 }
 
 function subtract(numOne,numTwo) {
-  //subtract
   return numOne - numTwo
 }
 
 function multiply(numOne,numTwo) {
-  //multiply
   return numOne * numTwo
 }
 
 function divide(numOne,numTwo) {
-  //divide
   return numOne / numTwo
 }
 
-function operate(firstNum,Operator,secondNum) {
-  //evalaute line
+function evalaute(firstNum,Operator,secondNum) {
   let result = 0;
-
+  
   switch(Operator) {
     case 'addition':
       result = add(firstNum, secondNum);
       break;
-  }
-
+    case 'subtraction':
+      result = subtract(firstNum, secondNum);
+      break;
+    case 'multiplication':
+      result = multiply(firstNum, secondNum);
+      break; 
+    case 'division':
+      result = divide(firstNum, secondNum);
+      break;
+    }
+    
   return result;
+  }
+  
+function operate(operation, sign) {
+  operator = operation;
+  evalaute(previousNum, operator, currentNum);
+  previousNum = currentNum;
+  screenTop.textContent += screenBottom.textContent;
+  screenTop.textContent += ` ${sign} `
+  screenBottom.textContent = ''
+  currentNum = 0;
 }
 
 function buttonClick(value) {
+ 
   screenBottom.textContent += value;
   currentNum = parseInt(screenBottom.textContent);
 }
@@ -50,7 +65,9 @@ testBtn.addEventListener('click', () => {
   console.log(`Previous Number: ${previousNum}`);
   console.log(`Operator: ${operator}`);
 })
+
 //Buttons
+let backSpcBtn = document.querySelector('#backspace');
 let clearAllBtn = document.querySelector('#clearAllBtn');
 let clearBtn = document.querySelector('#clearBtn')
 let zeroBtn = document.querySelector('#zeroBtn');
@@ -72,6 +89,7 @@ let equalBtn = document.querySelector('#equalBtn');
 
 clearAllBtn.addEventListener('click', () => {
   screenTop.textContent = '';
+  screenBottom.textContent = '';
   previousNum = 0;
   currentNum = 0;
   operator = '';
@@ -92,37 +110,13 @@ nineBtn.addEventListener('click', () => {buttonClick(9)})
 zeroBtn.addEventListener('click', () => {buttonClick(0)})
 
 
-addBtn.addEventListener('click', () => {
-  operator = 'addition';
-  console.log(operate(previousNum, operator, currentNum));
-  previousNum = currentNum;
-  screenTop.textContent += screenBottom.textContent;
-  screenTop.textContent += ' + ';
-  screenBottom.textContent = '';
-  currentNum = 0;
-})
-
-
-subBtn.addEventListener('click', () => {
-  screenTop.textContent += screenBottom.textContent;
-  screenTop.textContent += ' - ';
-  screenBottom.textContent = '';
-})
-multiplyBtn.addEventListener('click', () => {
-  screenTop.textContent += screenBottom.textContent;
-  screenTop.textContent += ' * ';
-  screenBottom.textContent = '';
-})
-divideBtn.addEventListener('click', () => {
-  screenTop.textContent += screenBottom.textContent;
-  screenTop.textContent += ' ÷ ';
-  screenBottom.textContent = '';
-})
+addBtn.addEventListener('click', () => {operate('addition', '+')})
+subBtn.addEventListener('click', () => {operate('subtraction', '-')})
+multiplyBtn.addEventListener('click', () => {operate('multiplication', '*')})
+divideBtn.addEventListener('click', () => {operate('division', '÷')})
 equalBtn.addEventListener('click', () => {
-  operate(previousNum, operator, currentNum);
   screenTop.textContent += screenBottom.textContent;
-  screenBottom.textContent =  operate(previousNum, operator, currentNum);
-  console.log(screenTop.textContent)
+  screenBottom.textContent =  evalaute(previousNum, operator, currentNum);
 })
 
-console.log(add(2,3))
+
