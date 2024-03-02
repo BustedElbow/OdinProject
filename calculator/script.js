@@ -74,12 +74,12 @@ function buttonClick(value) {
     screenTop.textContent = '';
     screenBottom.textContent = '';
     screenBottom.textContent += value;
-    currentNum = parseInt(screenBottom.textContent)
+    currentNum = parseFloat(screenBottom.textContent)
     isEqual = false;
   } else {
     isOperator = true;
     screenBottom.textContent += value;
-    currentNum = parseInt(screenBottom.textContent);
+    currentNum = parseFloat(screenBottom.textContent);
   }
 }
 
@@ -117,6 +117,7 @@ const sevenBtn = document.querySelector('#sevenBtn');
 const eightBtn = document.querySelector('#eightBtn');
 const nineBtn = document.querySelector('#nineBtn');
 //Operation Button
+const pointBtn = document.querySelector('#pointBtn');
 const negativeBtn = document.querySelector('#negativeBtn');
 const addBtn = document.querySelector('#addBtn');
 const subBtn = document.querySelector('#subBtn');
@@ -139,10 +140,25 @@ clearBtn.addEventListener('click', () => {
   currentNum = 0;
 })
 
+pointBtn.addEventListener('click', () => {
+  if(isEqual) {
+    screenTop.textContent = '';
+    screenBottom.textContent = '';
+  }
+  if(!screenBottom.textContent.includes('.')){
+    screenBottom.textContent += '.';
+  }
+  currentNum = parseFloat(screenBottom.textContent);
+})
+
 backSpcBtn.addEventListener('click', () => {
+  if(isEqual) {
+    screenTop.textContent = '';
+    screenBottom.textContent = '';
+  }
   if(screenBottom.textContent.length > 0) {
     screenBottom.textContent = screenBottom.textContent.substring(0, screenBottom.textContent.length - 1)
-    currentNum = parseInt(screenBottom.textContent);
+    currentNum = parseFloat(screenBottom.textContent);
     if(Number.isNaN(currentNum)){
       currentNum = 0;
       isOperator = false;
