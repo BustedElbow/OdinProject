@@ -28,6 +28,8 @@ function equal(numOne, sign, numTwo) {
   } else {
     screenBottom.textContent = currentNum;
   }
+
+  isEqual = true;
 }
 
 function evalaute(firstNum,Operator,secondNum) {
@@ -67,11 +69,23 @@ function operate(operation, sign) {
 }
 
 function buttonClick(value) {
-  isOperator = true;
-  screenBottom.textContent += value;
-  currentNum = parseInt(screenBottom.textContent);
-}
 
+  if(isEqual) {
+    previousNum = 0;
+    screenTop.textContent = '';
+    screenBottom.textContent = '';
+    screenBottom.textContent += value;
+    currentNum = parseInt(screenBottom.textContent)
+    isEqual = false;
+  } else {
+    isOperator = true;
+    screenBottom.textContent += value;
+    currentNum = parseInt(screenBottom.textContent);
+  }
+
+  }
+
+let isEqual = false;
 let isOperator = false;
 let globalSign = '';
 let previousNum = 0;
@@ -85,7 +99,7 @@ let testBtn = document.querySelector('#test')
 testBtn.addEventListener('click', () => {
   console.log(`Current Number: ${currentNum}`);
   console.log(`Previous Number: ${previousNum}`);
-  console.log(`Operator: ${operator}`);
+  console.log(`Operator: ${globalOperator}`);
   console.log(`IsOperator: ${isOperator}`);
 })
 
@@ -104,6 +118,7 @@ let sevenBtn = document.querySelector('#sevenBtn');
 let eightBtn = document.querySelector('#eightBtn');
 let nineBtn = document.querySelector('#nineBtn');
 //Operation Button
+let negativeBtn = document.querySelector('#negativeBtn');
 let addBtn = document.querySelector('#addBtn');
 let subBtn = document.querySelector('#subBtn');
 let multiplyBtn = document.querySelector('#multiplyBtn');
@@ -134,6 +149,21 @@ backSpcBtn.addEventListener('click', () => {
       isOperator = false;
     }
   }
+})
+
+let isNegative = false;
+
+negativeBtn.addEventListener('click', () => {
+  isNegative = !isNegative;
+
+  if(isNegative) {
+    const negative = '-';
+    screenBottom.textContent = negative.concat('', screenBottom.textContent);
+  } else {
+    const positive = '';
+    screenBottom.textContent = positive.concat('', screenBottom.textContent);
+  }
+  // currentNum = parseInt(screenBottom.textContent);
 })
 
 oneBtn.addEventListener('click', () => {buttonClick(1)})
