@@ -55,15 +55,9 @@ function evalaute(firstNum,Operator,secondNum) {
 }
   
 function operate(operation, sign) {
-  // if(isEqual){
-  //   currentNum = 0;
-  //   screenTop.textContent = '';
-  //   screenBottom.textContent = '';
   if(isEqual && isOperator) {
       globalSign = sign;
-      //let result = evalaute(previousNum, globalOperator, currentNum);
       globalOperator = operation;
-      //previousNum = result;
       screenTop.textContent = `${previousNum}`;
       screenTop.textContent += ` ${sign} `;
       screenBottom.textContent = ''
