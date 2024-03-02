@@ -14,6 +14,22 @@ function divide(numOne,numTwo) {
   return numOne / numTwo;
 }
 
+function equal(numOne, sign, numTwo) {
+  if((globalOperator === 'multiplication' || 
+      globalOperator === 'division' ||
+      globalOperator === 'addition' ||
+      globalOperator === 'subtraction') && currentNum === 0) {
+    screenBottom.textContent = previousNum;
+  } else if(globalOperator != ''){
+    screenTop.textContent = `${numOne} ${sign} ${numTwo}`
+    previousNum = evalaute(numOne, globalOperator, numTwo)
+    screenBottom.textContent = `${previousNum}`;
+    currentNum = 0;
+  } else {
+    screenBottom.textContent = currentNum;
+  }
+}
+
 function evalaute(firstNum,Operator,secondNum) {
   let result = currentNum;
   
@@ -30,24 +46,23 @@ function evalaute(firstNum,Operator,secondNum) {
     case 'division':
       result = divide(firstNum, secondNum);
       break;
-   
     }
     
   return result;
-  }
+}
   
 function operate(operation, sign) {
   if(isOperator) {
     globalSign = sign;
-    let result = evalaute(previousNum, operator, currentNum);
-    operator = operation;
+    let result = evalaute(previousNum, globalOperator, currentNum);
+    globalOperator = operation;
     previousNum = result;
     screenTop.textContent = `${result}`;
     screenTop.textContent += ` ${sign} `;
     screenBottom.textContent = ''
     currentNum = 0;
   } 
-
+ 
   isOperator = false;
 }
 
@@ -61,7 +76,7 @@ let isOperator = false;
 let globalSign = '';
 let previousNum = 0;
 let currentNum = 0;
-let operator = '';
+let globalOperator = '';
 
 let screenBottom = document.querySelector('.screen-bottom');
 let screenTop = document.querySelector('.screen-top');
@@ -102,6 +117,7 @@ clearAllBtn.addEventListener('click', () => {
   currentNum = 0;
   globalSign = '';
   operator = '';
+  isOperator = false;
 })
 
 clearBtn.addEventListener('click', () => {
@@ -115,6 +131,7 @@ backSpcBtn.addEventListener('click', () => {
     currentNum = parseInt(screenBottom.textContent);
     if(Number.isNaN(currentNum)){
       currentNum = 0;
+      isOperator = false;
     }
   }
 })
@@ -134,17 +151,4 @@ addBtn.addEventListener('click', () => {operate('addition', '+')})
 subBtn.addEventListener('click', () => {operate('subtraction', '-')})
 multiplyBtn.addEventListener('click', () => {operate('multiplication', '*')})
 divideBtn.addEventListener('click', () => {operate('division', '÷')})
-equalBtn.addEventListener('click', () => {
-
-  if(operator === 'multiplication' && currentNum == 0) {
-    screenBottom.textContent = previousNum;
-  } else if(operator != ''){
-    screenTop.textContent = `${previousNum} ${globalSign} ${currentNum}`
-    previousNum = evalaute(previousNum, operator, currentNum)
-    screenBottom.textContent = `${previousNum}`;
-    currentNum = 0;
-  } else {
-    screenBottom.textContent = currentNum;
-  }
-})
-
+equalBtn.addEventListener('click', () => {equal(previousNum, globalSign, currentNum)})
