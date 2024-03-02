@@ -15,7 +15,7 @@ function divide(numOne,numTwo) {
 }
 
 function evalaute(firstNum,Operator,secondNum) {
-  let result = 0;
+  let result = currentNum;
   
   switch(Operator) {
     case 'addition':
@@ -37,18 +37,15 @@ function evalaute(firstNum,Operator,secondNum) {
   }
   
 function operate(operation, sign) {
-
   if(isOperator) {
+    let result = evalaute(previousNum, operator, currentNum);
     operator = operation;
-    previousNum = currentNum;
-    screenTop.textContent += screenBottom.textContent;
-    screenTop.textContent += ` ${sign} `
+    previousNum = result;
+    screenTop.textContent = `${result}`;
+    screenTop.textContent += ` ${sign} `;
     screenBottom.textContent = ''
     currentNum = 0;
-  } else {
-    
-    previousNum = evalaute(previousNum, operator, currentNum);
-  }
+  } 
 
   isOperator = false;
 }
@@ -135,8 +132,7 @@ equalBtn.addEventListener('click', () => {
 
   if(operator != '') {
     previousNum = evalaute(previousNum, operator, currentNum)
-    screenTop.textContent += screenBottom.textContent;
-    screenBottom.textContent = previousNum;
+    screenBottom.textContent = `${previousNum}`;
     currentNum = 0;
   } else {
     screenBottom.textContent = currentNum;
