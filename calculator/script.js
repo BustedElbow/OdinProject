@@ -20,17 +20,15 @@ function equal(numOne, sign, numTwo) {
       globalOperator === 'addition' ||
       globalOperator === 'subtraction') && currentNum === 0) {
     screenBottom.textContent = previousNum;
+    isOperator = true;
   } else if(globalOperator !== ''){
     previousNum = evalaute(numOne, globalOperator, numTwo)
     screenTop.textContent = `${numOne} ${sign} ${numTwo} =`
     screenBottom.textContent = `${previousNum}`;
     currentNum = 0;
-  } else if(currentNum === 0 || previousNum === 0) {
+  } else if(currentNum === 0 && previousNum === 0) {
     screenBottom.textContent = '';
-    // screenTop.textContent = '';
-  } else {
-    screenBottom.textContent = currentNum;
-  }
+  } 
   globalOperator = '';
   isEqual = true;
 }
@@ -58,29 +56,26 @@ function operate(operation, sign) {
   if(isEqual && isOperator) {
       globalSign = sign;
       globalOperator = operation;
-      screenTop.textContent = `${previousNum}`;
-      screenTop.textContent += ` ${sign} `;
+      screenTop.textContent = `${previousNum} ${sign}`;
       screenBottom.textContent = ''
       currentNum = 0;
       isEqual = false;
-  } else {
-    if(isOperator) {
-      globalSign = sign;
-      let result = evalaute(previousNum, globalOperator, currentNum);
-      globalOperator = operation;
-      previousNum = result;
-      screenTop.textContent = `${result}`;
-      screenTop.textContent += ` ${sign} `;
-      screenBottom.textContent = ''
-      currentNum = 0;
-    } 
-  }
+    } else {
+      if(isOperator) {
+        globalSign = sign;
+        let result = evalaute(previousNum, globalOperator, currentNum);
+        globalOperator = operation;
+        previousNum = result;
+        screenTop.textContent = `${result} ${sign}`;
+        screenBottom.textContent = ''
+        currentNum = 0;
+      } 
+    }
   isOperator = false;
 }
 
 function buttonClick(value) {
   if(isEqual) {
-    //previousNum = 0;
     screenTop.textContent = '';
     screenBottom.textContent = '';
     screenBottom.textContent += value;
@@ -127,7 +122,7 @@ const backSpcBtn = document.querySelector('#backspace');
 const clearAllBtn = document.querySelector('#clearAllBtn');
 const clearBtn = document.querySelector('#clearBtn')
 const zeroBtn = document.querySelector('#zeroBtn');
-// 
+
 //Operation Button
 const pointBtn = document.querySelector('#pointBtn');
 const negativeBtn = document.querySelector('#negativeBtn');
@@ -187,17 +182,6 @@ negativeBtn.addEventListener('click', () => {
   }
   currentNum = parseInt(screenBottom.textContent);
 })
-
-// oneBtn.addEventListener('click', () => {buttonClick(1)})
-// twoBtn.addEventListener('click', () => {buttonClick(2)})
-// threeBtn.addEventListener('click', () => {buttonClick(3)})
-// fourBtn.addEventListener('click', () => {buttonClick(4)})
-// fiveBtn.addEventListener('click', () => {buttonClick(5)})
-// sixBtn.addEventListener('click', () => {buttonClick(6)})
-// sevenBtn.addEventListener('click', () => {buttonClick(7)})
-// eightBtn.addEventListener('click', () => {buttonClick(8)})
-// nineBtn.addEventListener('click', () => {buttonClick(9)})
-// zeroBtn.addEventListener('click', () => {buttonClick(0)})
 
 addBtn.addEventListener('click', () => {operate('addition', '+')})
 subBtn.addEventListener('click', () => {operate('subtraction', '-')})
