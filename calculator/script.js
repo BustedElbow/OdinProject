@@ -113,20 +113,21 @@ testBtn.addEventListener('click', () => {
   console.log(`IsEqual: ${isEqual}`)
 })
 
+const numberBtn = document.querySelectorAll('.number');
+
+numberBtn.forEach((button) => {
+  button.addEventListener('click', () => {
+    buttonClick(button.textContent)
+  })
+})
+
+
 //Buttons
 const backSpcBtn = document.querySelector('#backspace');
 const clearAllBtn = document.querySelector('#clearAllBtn');
 const clearBtn = document.querySelector('#clearBtn')
 const zeroBtn = document.querySelector('#zeroBtn');
-const oneBtn = document.querySelector('#oneBtn');
-const twoBtn = document.querySelector('#twoBtn');
-const threeBtn = document.querySelector('#threeBtn');
-const fourBtn = document.querySelector('#fourBtn');
-const fiveBtn = document.querySelector('#fiveBtn');
-const sixBtn = document.querySelector('#sixBtn');
-const sevenBtn = document.querySelector('#sevenBtn');
-const eightBtn = document.querySelector('#eightBtn');
-const nineBtn = document.querySelector('#nineBtn');
+// 
 //Operation Button
 const pointBtn = document.querySelector('#pointBtn');
 const negativeBtn = document.querySelector('#negativeBtn');
@@ -187,16 +188,16 @@ negativeBtn.addEventListener('click', () => {
   currentNum = parseInt(screenBottom.textContent);
 })
 
-oneBtn.addEventListener('click', () => {buttonClick(1)})
-twoBtn.addEventListener('click', () => {buttonClick(2)})
-threeBtn.addEventListener('click', () => {buttonClick(3)})
-fourBtn.addEventListener('click', () => {buttonClick(4)})
-fiveBtn.addEventListener('click', () => {buttonClick(5)})
-sixBtn.addEventListener('click', () => {buttonClick(6)})
-sevenBtn.addEventListener('click', () => {buttonClick(7)})
-eightBtn.addEventListener('click', () => {buttonClick(8)})
-nineBtn.addEventListener('click', () => {buttonClick(9)})
-zeroBtn.addEventListener('click', () => {buttonClick(0)})
+// oneBtn.addEventListener('click', () => {buttonClick(1)})
+// twoBtn.addEventListener('click', () => {buttonClick(2)})
+// threeBtn.addEventListener('click', () => {buttonClick(3)})
+// fourBtn.addEventListener('click', () => {buttonClick(4)})
+// fiveBtn.addEventListener('click', () => {buttonClick(5)})
+// sixBtn.addEventListener('click', () => {buttonClick(6)})
+// sevenBtn.addEventListener('click', () => {buttonClick(7)})
+// eightBtn.addEventListener('click', () => {buttonClick(8)})
+// nineBtn.addEventListener('click', () => {buttonClick(9)})
+// zeroBtn.addEventListener('click', () => {buttonClick(0)})
 
 addBtn.addEventListener('click', () => {operate('addition', '+')})
 subBtn.addEventListener('click', () => {operate('subtraction', '-')})
