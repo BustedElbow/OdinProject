@@ -159,10 +159,6 @@ pointBtn.addEventListener('click', () => {
 })
 
 backSpcBtn.addEventListener('click', () => {
-  if(isEqual) {
-    screenTop.textContent = '';
-    screenBottom.textContent = '';
-  }
   if(screenBottom.textContent.length > 0) {
     screenBottom.textContent = screenBottom.textContent.substring(0, screenBottom.textContent.length - 1)
     currentNum = parseFloat(screenBottom.textContent);
