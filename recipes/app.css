@@ -28,7 +28,7 @@ main {
 }
 
 .recipe-list-container {
-  border: 1px red solid;
+  /* border: 1px red solid; */
   width: 300px;
   height: 500px;
 }
@@ -39,5 +39,14 @@ main {
   max-width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: -5.2cm 0cm;  
+  object-position: 0cm 0cm;  
+  box-shadow: 5px 5px 10px rgb(63, 63, 63);
+}
+
+.cheese img {
+  object-position: -5.2cm 0cm;
+}
+
+.chicken img {
+  object-position: -5cm 0cm;
 }
