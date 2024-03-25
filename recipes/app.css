@@ -6,6 +6,7 @@
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 main {
@@ -26,11 +27,17 @@ main {
   gap: 1rem;
 }
 
-.recipe-list div {
-  height: 100px;
-  width: 200px;
-  background-color: rgb(161, 161, 161);
-  padding: 1rem;
-  border-radius: .25rem;
-  text-align: center;
+.recipe-list-container {
+  border: 1px red solid;
+  width: 300px;
+  height: 500px;
+}
+
+.recipe-list-container img{
+  /* border: 1px red solid; */
+  border-radius: .5rem;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: -5.2cm 0cm;  
 }
