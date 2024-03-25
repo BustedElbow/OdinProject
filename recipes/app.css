@@ -1,0 +1,36 @@
+* {
+  border: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  height: 100vh;
+  background-color: rgb(186, 186, 186);
+  display: flex;
+  justify-content: center;
+}
+
+.recipe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-container ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.recipe-list div {
+  height: 100px;
+  width: 200px;
+  background-color: rgb(161, 161, 161);
+  padding: 1rem;
+  border-radius: .25rem;
+  text-align: center;
+}
